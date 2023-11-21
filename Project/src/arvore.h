@@ -1,6 +1,3 @@
-#ifndef ARVORE_H
-#define ARVORE_H
-
 #include <stdio.h>
 
 // cria a estrutura da data
@@ -30,5 +27,5 @@ ArvBin* criarArvBin();
 int comparaEvento(struct DataHora dataHora1, struct DataHora dataHora2);
 void liberarMemoria(ArvBin *raiz);
 int insereArvore(ArvBin *raiz, struct DataHora dataHora);
+void imprimeEventos(ArvBin raiz);
 
-#endif ARVORE_H

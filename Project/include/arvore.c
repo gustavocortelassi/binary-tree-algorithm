@@ -89,3 +89,20 @@ int insereArvore(ArvBin *raiz, struct DataHora dataHora){
         return 1;        
     }
 }
+
+// metodo para imprimir no cmd
+void imprimeEventosRec(no *raiz) {
+    if (raiz != NULL) { // se a arvore tiver conteudo
+        imprimeEventosRec(raiz->esq); // imprime ate o fim da esquerda
+        printf("Data: %d/%d/%d Hora: %d:%d:%d Nome do Evento: %s\n", 
+               raiz->dataHora.dia, raiz->dataHora.mes, raiz->dataHora.ano,
+               raiz->dataHora.hora, raiz->dataHora.minuto, raiz->dataHora.segundo,
+               raiz->dataHora.nomeEvento);
+        imprimeEventosRec(raiz->dir); // imprime ate o fim da direita
+        
+    }
+}
+
+void imprimeEventos(ArvBin raiz) { // auxiliar recursiva
+    imprimeEventosRec(raiz);
+}
