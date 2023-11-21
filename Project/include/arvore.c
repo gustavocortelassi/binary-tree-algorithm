@@ -1,4 +1,4 @@
-#include "Project\src\arvore.h"
+#include "../src/arvore.h"
 
 // cria arvore
 ArvBin* criarArvBin() {
@@ -105,4 +105,30 @@ void imprimeEventosRec(no *raiz) {
 
 void imprimeEventos(ArvBin raiz) { // auxiliar recursiva
     imprimeEventosRec(raiz);
+}
+
+int atualizaEventoPorNomeRec(no *raiz, const char* nomeEvento, struct DataHora novaDataHora) {
+    if (raiz == NULL) {
+        return 0;
+    }
+
+    int comparacao = strcmp(nomeEvento, raiz->dataHora.nomeEvento);
+
+    if (comparacao < 0) {
+        return atualizaEventoPorNomeRec(raiz->esq, nomeEvento, novaDataHora);
+    } else if (comparacao > 0) {
+        return atualizaEventoPorNomeRec(raiz->dir, nomeEvento, novaDataHora);
+    } else {
+        raiz->dataHora = novaDataHora;
+        return 1;
+    }
+}
+
+int atualizaEventoPorNome(ArvBin *raiz, const char* nomeEvento, struct DataHora novaDataHora) {
+    if (raiz == NULL || *raiz == NULL) {
+        // Árvore vazia ou raiz nula
+        return 0;
+    }
+
+    return atualizaEventoPorNomeRec(*raiz, nomeEvento, novaDataHora);
 }
