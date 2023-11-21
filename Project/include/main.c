@@ -7,8 +7,15 @@ int main(){
     ArvBin *raiz = criarArvBin();
     struct DataHora novaDataHora;
 
-    printf("Informe a nova data (DD MM AAAA) e o novo horario (HH MM SS): \n");
-    scanf("%d %d %d", &novaDataHora.dia, &novaDataHora.mes, &novaDataHora.ano, &novaDataHora.hora, &novaDataHora.minuto, &novaDataHora.segundo);
+    printf("Informe o nome do evento");
+    fgets(novaDataHora.nomeEvento, 50, stdin);
+
+    printf("Informe a data (DD MM AAAA): \n");
+    scanf("%d %d %d", &novaDataHora.dia, &novaDataHora.mes, &novaDataHora.ano);
+
+    printf("Informe o horario (HH MM SS): ");
+    scanf("%d %d %d", &novaDataHora.hora, &novaDataHora.minuto, &novaDataHora.segundo);
+
 
     insereArvore(raiz, novaDataHora);
     
